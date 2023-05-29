@@ -6,6 +6,7 @@ import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
 
+
 const HomeScreen = () => {
   const dispatch = useDispatch();
   return (
@@ -51,6 +52,7 @@ const HomeScreen = () => {
   );
 };
 
+
 export default HomeScreen;
 
 const styles = StyleSheet.create({
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
+    justifyContent: "center"
   },
   autoComplete: {
     flex: 1,
