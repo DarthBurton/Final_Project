@@ -1,28 +1,21 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 import React, { useState } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FIREBASE_AUTH } from "../firebase/firebaseConfig";
 
-const WelcomeScreen = () => {
+const RegisterScreen = () => {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const LoginUser = () => {
-    signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
+  const RegisterUser = () => {
+    createUserWithEmailAndPassword(FIREBASE_AUTH, email, password)
       .then((re) => {
         console.log(re);
-        navigation.navigate("Home");
+        navigation.navigate("Profile");
       })
       .catch((err) => {
         console.log(err);
@@ -30,11 +23,8 @@ const WelcomeScreen = () => {
   };
 
   return (
-    <SafeAreaProvider style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.whiteSheet}>
-        <View style={styles.text}>
-          <Text>Welcome</Text>
-        </View>
         <TextInput
           autoCapitalize="none"
           style={styles.emailInput}
@@ -50,41 +40,24 @@ const WelcomeScreen = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-        <Button style={styles.loginButton} title="Login" onPress={LoginUser} />
-        <View>
-          <Text>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          style={styles.loginButton}
+          title="Register"
+          onPress={RegisterUser}
+        />
       </View>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 };
 
-export default WelcomeScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
-  loginButton: {
-    backgroundColor: "#f57c00",
-    height: 58,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  text: {
-    justifyContent: "center",
-  },
   emailInput: {
     backgroundColor: "#F6F7FB",
     height: 58,
-    width: "75%",
     marginBottom: 20,
+    width: "75%",
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
@@ -97,6 +70,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
   },
   whiteSheet: {
     width: "100%",
