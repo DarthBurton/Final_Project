@@ -8,9 +8,9 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { onAuthStateChanged } from "firebase/auth";
 import MapScreen from "./screens/MapScreen";
 import HomeScreen from "./screens/HomeScreen";
-import ProfileScreen from "./screens/ProfileScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import { createContext, useState } from "react";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -58,15 +58,15 @@ export default function App() {
                 }}
               />
               <Stack.Screen
-                name="Home"
-                component={HomeScreen}
+                name="Profile"
+                component={ProfileScreen}
                 options={{
                   headerShown: false,
                 }}
               />
               <Stack.Screen
-                name="Profile"
-                component={ProfileScreen}
+                name="Home"
+                component={HomeScreen}
                 options={{
                   headerShown: false,
                 }}
@@ -100,7 +100,6 @@ function BottomTab() {
           tabBarLabel: "Home",
         }}
       />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

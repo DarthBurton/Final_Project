@@ -1,13 +1,22 @@
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
-
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
   const dispatch = useDispatch();
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -47,11 +56,14 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Profile")}
+          style={{ backgroundColor: "red", height: 20, width: 20 }}
+        ></TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
-
 
 export default HomeScreen;
 
@@ -66,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   autoComplete: {
     flex: 1,

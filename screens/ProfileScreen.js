@@ -1,8 +1,37 @@
-import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, TextInput, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FIREBASE_AUTH, FIRESTORE_DB } from "../firebase/firebaseConfig";
+import { signOut } from "firebase/auth";
+import { getDocs, collection } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 
 export default ProfileScreen = () => {
+  const navigation = useNavigation();
+
+  const [user, setUser] = useState([]);
+
+  const userCollectionRef = collection(FIRESTORE_DB, "users");
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      // read data from db
+      try {
+        const data = await getDocs(userCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setUser(filteredData);
+        console.log(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+      // write data to db
+    };
+    getUserInfo();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -14,9 +43,13 @@ export default ProfileScreen = () => {
             }}
           />
 
-          <Text style={styles.name}>John Doe </Text>
-          <Text style={styles.userInfo}>jhonnydoe@mail.com </Text>
-          <Text style={styles.userInfo}>Florida </Text>
+          <Text style={styles.name}>USERNAME </Text>
+          <Text style={styles.userInfo}>{FIREBASE_AUTH.currentUser.email}</Text>
+          <Text style={styles.userInfo}>ID NUMBER </Text>
+          <Button
+            style={{ height: 20, width: 20, backgroundColor: "red" }}
+            title="Logout"
+          ></Button>
         </View>
       </View>
 
@@ -31,7 +64,11 @@ export default ProfileScreen = () => {
             />
           </View>
           <View style={styles.infoContent}>
-            <Text style={styles.info}>Settings</Text>
+            <TextInput
+              autoCapitalize="none"
+              style={styles.emailInput}
+              placeholder="Name"
+            />
           </View>
         </View>
 
@@ -93,10 +130,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "flex-start",
     paddingLeft: 5,
+    paddingTop: 10,
   },
   iconContent: {
     flex: 1,
-    alignItems: "flex-end",
+    alignItems: "center",
     paddingRight: 5,
   },
   icon: {
@@ -108,5 +146,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 20,
     color: "#FFFFFF",
+  },
+  emailInput: {
+    backgroundColor: "#F6F7FB",
+    height: 58,
+    width: "75%",
+    marginBottom: 20,
+    fontSize: 16,
+    borderRadius: 10,
+    padding: 12,
   },
 });
