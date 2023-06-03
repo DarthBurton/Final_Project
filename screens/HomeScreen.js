@@ -35,6 +35,7 @@ const HomeScreen = () => {
 
         <GooglePlacesAutocomplete
           placeholder="Where From"
+          
           style={styles.autoComplete}
           onPress={(data, details = false) => {
             dispatch(
@@ -57,10 +58,7 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Profile2")}
-          style={{ backgroundColor: "red", height: 20, width: 20 }}
-        ></TouchableOpacity>
+        
       </View>
     </SafeAreaView>
   );

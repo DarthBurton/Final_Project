@@ -67,7 +67,7 @@ export default function App() {
               
               <Stack.Screen
                 name="Home"
-                component={HomeScreen}
+                component={Home}
                 options={{
                   headerShown: false,
                 }}
@@ -87,25 +87,28 @@ export default function App() {
   );
 }
 
-function BottomTab() {
+function Home() {
   return (
     <Tab.Navigator
-      activeColor="#f0edf6"
-      inactiveColor="#3e2465"
-      barStyle={{ backgroundColor: "#694fad" }}
+      activeColor="#00afcc"
+      inactiveColor="white"
+      barStyle={{ backgroundColor: "#132855" }}
+      labeled="false"
     >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarLabel: "Home",
+          tabBarIcon: "home"                    
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Profile",
+          tabBarIcon: "account"
         }}
       />
     </Tab.Navigator>
