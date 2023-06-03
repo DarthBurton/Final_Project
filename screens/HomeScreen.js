@@ -35,7 +35,53 @@ const HomeScreen = () => {
 
         <GooglePlacesAutocomplete
           placeholder="Where From"
-          
+          styles={{
+            container: {
+              flex: 1,
+              width:200
+            },
+            textInputContainer: {
+              flexDirection: 'row',
+              backgroundColor: "#00afcc",
+              borderRadius:50,
+              padding: 10
+            },
+            textInput: {
+              backgroundColor: '#FFFFFF',
+              height: 44,
+              borderRadius: 50,
+              paddingVertical: 5,
+              paddingHorizontal: 35,
+              fontSize: 15,
+              flex: 1,              
+            },
+            poweredContainer: {
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              borderBottomRightRadius: 5,
+              borderBottomLeftRadius: 5,
+              borderColor: '#c8c7cc',
+              borderTopWidth: 0.5,
+            },
+            powered: {},
+            listView: {},
+            row: {
+              backgroundColor: '#FFFFFF',
+              padding: 13,
+              height: 44,
+              flexDirection: 'row',
+            },
+            separator: {
+              height: 0.5,
+              backgroundColor: '#c8c7cc',
+            },
+            description: {},
+            loader: {
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              height: 20,
+            },
+          }}
           style={styles.autoComplete}
           onPress={(data, details = false) => {
             dispatch(
@@ -77,10 +123,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
+    alignItems: "center"
+    
   },
   autoComplete: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
+    width:"auto"
     
   },
   logocontainer:{
