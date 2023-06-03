@@ -23,9 +23,10 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <Image
           style={{
-            width: 100,
-            height: 100,
+            width: 200,
+            height: 200,
             resizeMode: "contain",
+            
           }}
           source={{
             uri: "https://admin.antalya.edu.tr/files/139/abu-logo-en.jpg",
@@ -57,7 +58,7 @@ const HomeScreen = () => {
 
         <NavOptions />
         <TouchableOpacity
-          onPress={() => navigation.navigate("Profile")}
+          onPress={() => navigation.navigate("Profile2")}
           style={{ backgroundColor: "red", height: 20, width: 20 }}
         ></TouchableOpacity>
       </View>
@@ -78,9 +79,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    justifyContent: "center",
   },
   autoComplete: {
     flex: 1,
+    backgroundColor: "#fff",
+    
+  },
+  logocontainer:{
+    flex: 1,
+    padding: 5,
+    alignItems: "center",
   },
 });

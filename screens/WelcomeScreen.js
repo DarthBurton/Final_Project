@@ -5,6 +5,7 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -32,9 +33,17 @@ const WelcomeScreen = () => {
   return (
     <SafeAreaProvider style={styles.container}>
       <View style={styles.whiteSheet}>
-        <View style={styles.text}>
-          <Text>Welcome</Text>
-        </View>
+        <Image
+          style={{
+            width: 200,
+            height: 200,
+            resizeMode: "contain",
+            
+          }}
+          source={{
+            uri: "https://admin.antalya.edu.tr/files/139/abu-logo-en.jpg",
+          }}
+        />
         <TextInput
           autoCapitalize="none"
           style={styles.emailInput}
@@ -72,6 +81,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
+    borderWidth: 5,
+    borderColor: "#132855",
   },
   container: {
     flex: 1,
