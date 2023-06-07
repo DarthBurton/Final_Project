@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -31,14 +32,13 @@ const WelcomeScreen = () => {
   };
 
   return (
-    <SafeAreaProvider style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.whiteSheet}>
         <Image
           style={{
             width: 200,
             height: 200,
             resizeMode: "contain",
-            
           }}
           source={{
             uri: "https://admin.antalya.edu.tr/files/139/abu-logo-en.jpg",
@@ -67,7 +67,7 @@ const WelcomeScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaProvider>
+    </KeyboardAvoidingView>
   );
 };
 

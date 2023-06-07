@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import React from "react";
 import NavOptions from "../components/NavOptions";
@@ -20,69 +21,67 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <Image
           style={{
             width: 200,
             height: 200,
             resizeMode: "contain",
-            
           }}
           source={{
             uri: "https://admin.antalya.edu.tr/files/139/abu-logo-en.jpg",
           }}
         />
-
         <GooglePlacesAutocomplete
           placeholder="Where From"
           styles={{
             container: {
               flex: 1,
-              width:200
+              width: "90%",
+              marginBottom: 2,
             },
             textInputContainer: {
-              flexDirection: 'row',
+              flexDirection: "row",
               backgroundColor: "#00afcc",
-              borderRadius:50,
-              padding: 10
+              borderRadius: 50,
+              padding: 10,
             },
             textInput: {
-              backgroundColor: '#FFFFFF',
+              backgroundColor: "#FFFFFF",
               height: 44,
               borderRadius: 50,
               paddingVertical: 5,
               paddingHorizontal: 35,
               fontSize: 15,
-              flex: 1,              
+              flex: 1,
             },
             poweredContainer: {
-              justifyContent: 'flex-end',
-              alignItems: 'center',
+              justifyContent: "flex-end",
+              alignItems: "center",
               borderBottomRightRadius: 5,
               borderBottomLeftRadius: 5,
-              borderColor: '#c8c7cc',
+              borderColor: "#c8c7cc",
               borderTopWidth: 0.5,
             },
             powered: {},
             listView: {},
             row: {
-              backgroundColor: '#FFFFFF',
+              backgroundColor: "#FFFFFF",
               padding: 13,
               height: 44,
-              flexDirection: 'row',
+              flexDirection: "row",
             },
             separator: {
               height: 0.5,
-              backgroundColor: '#c8c7cc',
+              backgroundColor: "#c8c7cc",
             },
             description: {},
             loader: {
-              flexDirection: 'row',
-              justifyContent: 'flex-end',
+              flexDirection: "row",
+              justifyContent: "flex-end",
               height: 20,
             },
           }}
-          style={styles.autoComplete}
           onPress={(data, details = false) => {
             dispatch(
               setOrigin({
@@ -102,10 +101,8 @@ const HomeScreen = () => {
           nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
         />
-
         <NavOptions />
-        
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -123,16 +120,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    alignItems: "center"
-    
+    alignItems: "center",
   },
   autoComplete: {
     flex: 1,
     backgroundColor: "white",
-    width:"auto"
-    
+    width: "auto",
   },
-  logocontainer:{
+  logocontainer: {
     flex: 1,
     padding: 5,
     alignItems: "center",

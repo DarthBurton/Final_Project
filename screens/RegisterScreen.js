@@ -10,6 +10,8 @@ const RegisterScreen = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [idNumber, setIdNumber] = useState("");
 
   const RegisterUser = () => {
     createUserWithEmailAndPassword(FIREBASE_AUTH, email, password)
@@ -26,11 +28,26 @@ const RegisterScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.whiteSheet}>
         <TextInput
+          autoCapitalize="words"
+          style={styles.emailInput}
+          placeholder="Full Name"
+          value={fullName}
+          onChangeText={(text) => setFullName(text)}
+        />
+        <TextInput
           autoCapitalize="none"
           style={styles.emailInput}
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          autoCapitalize="none"
+          keyboardType="number-pad"
+          style={styles.emailInput}
+          placeholder="ID Number"
+          value={idNumber.toString()}
+          onChangeText={(text) => setIdNumber(text)}
         />
         <TextInput
           autoCapitalize="none"

@@ -38,50 +38,37 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={{ flex: 1 }}
-          >
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Welcome"
-                component={WelcomeScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="Map"
-                component={MapScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="Profile"
-                component={ProfileScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              
-              <Stack.Screen
-                name="Home"
-                component={Home}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="Register"
-                component={RegisterScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              
-            </Stack.Navigator>
-          </KeyboardAvoidingView>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Welcome"
+              component={WelcomeScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="Map"
+              component={MapScreen}
+              options={{
+                headerShown: true,
+              }}
+            />
+
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="Register"
+              component={RegisterScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
@@ -101,7 +88,7 @@ function Home() {
         component={HomeScreen}
         options={{
           tabBarLabel: "Home",
-          tabBarIcon: "home"                    
+          tabBarIcon: "home",
         }}
       />
       <Tab.Screen
@@ -109,7 +96,7 @@ function Home() {
         component={ProfileScreen}
         options={{
           tabBarLabel: "Profile",
-          tabBarIcon: "account"
+          tabBarIcon: "account",
         }}
       />
     </Tab.Navigator>
